@@ -7,6 +7,7 @@
 
 #include <windows.h>
 #include <winsock.h>
+#include <string>
 
 #include "../time/time.h"
 #include "../stream/stream.h"
@@ -244,7 +245,7 @@ int TCPStream::write( const char *buff,int size ){
 }
 
 int TCPStream::avail(){
-	unsigned long t;
+	unsigned long t = NULL;
 	int n=::ioctlsocket( sock,FIONREAD,&t );
 	if( n==SOCKET_ERROR ){ e=-1;return 0; }
 	return t;
